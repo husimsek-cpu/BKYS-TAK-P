@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BKYS TAKİP Uygulaması - Geliştirdiğim uygulamalara kolay erişim">
+    <title>BKYS-TAK-P - Uygulama Portalı</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .badges {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .app-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .app-card h3 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .app-status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-development {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .app-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .app-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .app-features li {
+            padding: 8px 0;
+            color: #555;
+        }
+
+        .app-features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .app-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .quick-start {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+
+        .quick-start h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .quick-start ol {
+            margin-left: 25px;
+            color: #555;
+        }
+
+        .quick-start li {
+            margin: 10px 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 BKYS-TAK-P</h1>
+            <p>Geliştirdiğim Uygulamalara Kolay Erişim Portalı</p>
+            <div class="badges">
+                <span class="badge">✅ Aktif</span>
+                <span class="badge">🔄 Düzenli Güncelleme</span>
+                <span class="badge">🌟 Açık Kaynak</span>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#hakkinda">📖 Hakkında</a></li>
+                <li><a href="#uygulamalar">🚀 Uygulamalar</a></li>
+                <li><a href="#baslangic">🎯 Hızlı Başlangıç</a></li>
+                <li><a href="#iletisim">📞 İletişim</a></li>
+                <li><a href="https://github.com/husimsek-cpu/BKYS-TAK-P" target="_blank">💻 GitHub</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <section id="hakkinda" class="section">
+                <h2>📖 Hakkında</h2>
+                <p>
+                    Bu portal, BKYS TAKİP uygulaması ve geliştirdiğim diğer projeler için merkezi erişim noktasıdır. 
+                    Tüm uygulamalarıma buradan kolayca ulaşabilir, dokümantasyonları inceleyebilir ve 
+                    projelere katkıda bulunabilirsiniz.
+                </p>
+            </section>
+
+            <section id="uygulamalar" class="section">
+                <h2>🚀 Uygulamalar</h2>
+                
+                <div class="app-grid">
+                    <div class="app-card">
+                        <h3>BKYS TAKİP Uygulaması</h3>
+                        <span class="app-status status-development">Aktif Geliştirme</span>
+                        <p>BKYS takip sistemi için geliştirilmiş kapsamlı takip ve izleme uygulaması.</p>
+                        
+                        <ul class="app-features">
+                            <li>Takip ve izleme özellikleri</li>
+                            <li>Kullanıcı dostu arayüz</li>
+                            <li>Gerçek zamanlı güncellemeler</li>
+                            <li>Raporlama ve analiz araçları</li>
+                        </ul>
+
+                        <div class="app-links">
+                            <a href="https://github.com/husimsek-cpu/BKYS-TAK-P" class="btn" target="_blank">
+                                <span class="icon">📁</span> Projeye Git
+                            </a>
+                            <a href="https://github.com/husimsek-cpu/BKYS-TAK-P/issues" class="btn btn-secondary" target="_blank">
+                                <span class="icon">🐛</span> Sorun Bildir
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="app-card">
+                        <h3>Yakında...</h3>
+                        <span class="app-status status-development">Planlama Aşamasında</span>
+                        <p>Yeni projeler ve uygulamalar eklendiğinde burada görüntülenecektir.</p>
+                        
+                        <div class="app-links">
+                            <a href="https://github.com/husimsek-cpu" class="btn" target="_blank">
+                                <span class="icon">👤</span> Profili Ziyaret Et
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="baslangic" class="section">
+                <h2>🎯 Hızlı Başlangıç</h2>
+                
+                <div class="quick-start">
+                    <h3>Repository'yi Klonlama</h3>
+                    <div class="code-block">
+                        # Repository'yi klonlayın<br>
+                        git clone https://github.com/husimsek-cpu/BKYS-TAK-P.git<br>
+                        <br>
+                        # Proje dizinine gidin<br>
+                        cd BKYS-TAK-P
+                    </div>
+                </div>
+
+                <div class="quick-start" style="margin-top: 20px;">
+                    <h3>Kullanım Adımları</h3>
+                    <ol>
+                        <li>İlgili uygulamanın kartına tıklayın</li>
+                        <li>Proje deposuna gidin</li>
+                        <li>Dokümantasyonu okuyun</li>
+                        <li>Kurulum adımlarını takip edin</li>
+                        <li>Uygulamayı çalıştırın ve kullanın</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="iletisim" class="section">
+                <h2>📞 İletişim ve Destek</h2>
+                <p>
+                    Sorularınız, önerileriniz veya geri bildirimleriniz için benimle iletişime geçebilirsiniz:
+                </p>
+                <div style="margin-top: 20px;">
+                    <a href="https://github.com/husimsek-cpu/BKYS-TAK-P/issues" class="btn" target="_blank">
+                        <span class="icon">🐛</span> Sorun Bildir
+                    </a>
+                    <a href="https://github.com/husimsek-cpu" class="btn btn-secondary" target="_blank">
+                        <span class="icon">👤</span> GitHub Profilim
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>
+                <strong>BKYS-TAK-P</strong> - Geliştirdiğim Uygulamalar Portalı
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/husimsek-cpu">@husimsek-cpu</a> tarafından geliştirilmiştir
+            </p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                Son Güncelleme: 2025-11-16
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
