@@ -9,6 +9,7 @@
 - [Uygulamalar](#uygulamalar)
 - [Hızlı Başlangıç](#hızlı-başlangıç)
 - [Kullanım](#kullanım)
+- [Dokümantasyon](#dokümantasyon)
 - [Katkıda Bulunma](#katkıda-bulunma)
 - [İletişim](#iletişim)
 
@@ -70,6 +71,14 @@ Uygulamaları kullanmak için:
 2. Dokümantasyonu okuyun
 3. Kurulum adımlarını takip edin
 4. Uygulamayı çalıştırın
+
+## 📚 Dokümantasyon
+
+Detaylı dokümantasyon için:
+
+- 📖 [Dokümantasyon Klasörü](docs/) - Tüm dokümantasyon
+- 🚀 [Hızlı Erişim Rehberi](docs/QUICK_ACCESS.md) - Erişim yöntemleri
+- 🌐 [Web Portalı](index.html) - HTML arayüzü (tarayıcıda açın)
 
 ## 🤝 Katkıda Bulunma
 
