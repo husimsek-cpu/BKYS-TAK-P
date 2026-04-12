@@ -22,6 +22,13 @@ body { margin: 0; }
   gap: 12px;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
 .hero h1 { margin: 0 0 6px; }
 .hero p { margin: 0; color: #475569; }
 
@@ -91,6 +98,10 @@ button.ghost {
   background: #eff6ff;
   color: #1d4ed8;
 }
+button.danger-ghost {
+  background: #fee2e2;
+  color: #991b1b;
+}
 
 .hint { margin: 8px 0 0; color: #64748b; font-size: 12px; }
 
@@ -155,6 +166,7 @@ th {
   border-radius: 10px;
   padding: 10px 14px;
   font-size: 13px;
+  max-width: min(420px, 92vw);
 }
 
 .toast[data-type="danger"] { background: #7f1d1d; }
@@ -168,6 +180,8 @@ th {
 @media (max-width: 760px) {
   .hero,
   .panel-header { flex-direction: column; align-items: stretch; }
+  .hero-actions { justify-content: stretch; }
+  .hero-actions button { width: 100%; }
   .stats,
   .form-grid { grid-template-columns: 1fr; }
   .search { max-width: none; }

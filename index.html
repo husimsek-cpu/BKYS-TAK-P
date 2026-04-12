@@ -13,7 +13,12 @@
           <h1>Ürün Takip Uygulaması</h1>
           <p>Ürün ekle, stok yönet, kritik ürünleri anlık takip et.</p>
         </div>
-        <button id="clearAll" class="ghost" type="button">Tüm Veriyi Temizle</button>
+        <div class="hero-actions">
+          <button id="exportCsv" class="ghost" type="button">CSV Dışa Aktar</button>
+          <button id="importCsv" class="ghost" type="button">CSV İçe Aktar</button>
+          <button id="clearAll" class="ghost danger-ghost" type="button">Tüm Veriyi Temizle</button>
+          <input id="csvFile" type="file" accept=".csv,text/csv" hidden />
+        </div>
       </header>
 
       <section class="stats" id="stats"></section>
@@ -68,7 +73,8 @@
         <td class="actions">
           <button class="small decrement" type="button">-1</button>
           <button class="small increment" type="button">+1</button>
-          <button class="small warning edit" type="button">Min+1</button>
+          <button class="small warning edit-min" type="button">Min+1</button>
+          <button class="small ghost edit" type="button">Düzenle</button>
           <button class="small danger delete" type="button">Sil</button>
         </td>
       </tr>
