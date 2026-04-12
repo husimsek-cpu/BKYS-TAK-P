@@ -8,43 +8,35 @@
   </head>
   <body>
     <main class="container">
-      <header>
-        <h1>Ürün Takip Uygulaması</h1>
-        <p>Ürün ekle, stok güncelle ve kritik stokları takip et.</p>
+      <header class="hero">
+        <div>
+          <h1>Ürün Takip Uygulaması</h1>
+          <p>Ürün ekle, stok yönet, kritik ürünleri anlık takip et.</p>
+        </div>
+        <button id="clearAll" class="ghost" type="button">Tüm Veriyi Temizle</button>
       </header>
+
+      <section class="stats" id="stats"></section>
 
       <section class="panel">
         <h2>Yeni Ürün</h2>
         <form id="productForm" class="form-grid">
-          <label>
-            Ürün Adı
-            <input id="name" required placeholder="Örn: Kablosuz Mouse" />
-          </label>
-          <label>
-            SKU
-            <input id="sku" required placeholder="Örn: MSE-100" />
-          </label>
-          <label>
-            Kategori
-            <input id="category" required placeholder="Örn: Aksesuar" />
-          </label>
-          <label>
-            Stok
-            <input id="stock" type="number" min="0" required value="0" />
-          </label>
-          <label>
-            Minimum Stok
-            <input id="minStock" type="number" min="0" required value="5" />
-          </label>
+          <label>Ürün Adı<input id="name" required placeholder="Örn: Kablosuz Mouse" /></label>
+          <label>SKU<input id="sku" required placeholder="Örn: MSE-100" /></label>
+          <label>Kategori<input id="category" required placeholder="Örn: Aksesuar" /></label>
+          <label>Stok<input id="stock" type="number" min="0" required value="0" /></label>
+          <label>Minimum Stok<input id="minStock" type="number" min="0" required value="5" /></label>
           <button type="submit">Ürün Ekle</button>
         </form>
+        <p class="hint">Not: SKU değeri benzersiz olmalıdır.</p>
       </section>
 
       <section class="panel">
         <div class="panel-header">
           <h2>Ürün Listesi</h2>
-          <div class="kpi" id="kpi">Toplam ürün: 0</div>
+          <input id="search" class="search" placeholder="Ürün, SKU veya kategori ara..." />
         </div>
+
         <div class="table-wrapper">
           <table>
             <thead>
@@ -60,6 +52,7 @@
             </thead>
             <tbody id="productBody"></tbody>
           </table>
+          <p id="emptyState" class="empty" hidden>Aramaya uygun ürün bulunamadı.</p>
         </div>
       </section>
     </main>
@@ -72,13 +65,16 @@
         <td class="stock"></td>
         <td class="min-stock"></td>
         <td><span class="badge status"></span></td>
-        <td>
-          <button class="small decrement">-1</button>
-          <button class="small increment">+1</button>
-          <button class="small danger delete">Sil</button>
+        <td class="actions">
+          <button class="small decrement" type="button">-1</button>
+          <button class="small increment" type="button">+1</button>
+          <button class="small warning edit" type="button">Min+1</button>
+          <button class="small danger delete" type="button">Sil</button>
         </td>
       </tr>
     </template>
+
+    <div id="toast" class="toast" hidden></div>
 
     <script src="app.js"></script>
   </body>

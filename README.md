@@ -1,6 +1,6 @@
 # BKYS-TAK-P
 
-Basit bir ürün takip uygulaması (vanilla HTML/CSS/JS).
+Vanilla HTML/CSS/JS ile hazırlanmış hafif bir ürün takip uygulaması.
 
 ## Çalıştırma
 
@@ -8,14 +8,17 @@ Basit bir ürün takip uygulaması (vanilla HTML/CSS/JS).
 python3 -m http.server 8000
 ```
 
-Tarayıcıdan aç:
+Tarayıcıdan açın:
 
 - http://localhost:8000
 
 ## Özellikler
 
-- Ürün ekleme
+- Ürün ekleme (SKU benzersizlik kontrolü)
 - Stok +1/-1 güncelleme
-- Kritik stok durum etiketi
-- Ürün silme
+- Minimum stok değerini hızlı artırma
+- Kritik/tükenen ürün etiketleri
+- Arama (ürün adı, SKU, kategori)
+- KPI kartları (toplam, sağlıklı, kritik, tükenen)
+- Tüm veriyi temizleme
 - Verileri `localStorage` ile saklama
