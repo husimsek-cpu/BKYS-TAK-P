@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ürün Takip Uygulaması</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <div>
+          <h1>Ürün Takip Uygulaması</h1>
+          <p>Ürün ekle, stok yönet, kritik ürünleri anlık takip et.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="exportCsv" class="ghost" type="button">CSV Dışa Aktar</button>
+          <button id="importCsv" class="ghost" type="button">CSV İçe Aktar</button>
+          <button id="clearAll" class="ghost danger-ghost" type="button">Tüm Veriyi Temizle</button>
+          <input id="csvFile" type="file" accept=".csv,text/csv" hidden />
+        </div>
+      </header>
+
+      <section class="stats" id="stats"></section>
+
+      <section class="panel">
+        <h2>Yeni Ürün</h2>
+        <form id="productForm" class="form-grid">
+          <label>Ürün Adı<input id="name" required placeholder="Örn: Kablosuz Mouse" /></label>
+          <label>SKU<input id="sku" required placeholder="Örn: MSE-100" /></label>
+          <label>Kategori<input id="category" required placeholder="Örn: Aksesuar" /></label>
+          <label>Stok<input id="stock" type="number" min="0" required value="0" /></label>
+          <label>Minimum Stok<input id="minStock" type="number" min="0" required value="5" /></label>
+          <button type="submit">Ürün Ekle</button>
+        </form>
+        <p class="hint">Not: SKU değeri benzersiz olmalıdır.</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Ürün Listesi</h2>
+          <input id="search" class="search" placeholder="Ürün, SKU veya kategori ara..." />
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Ürün</th>
+                <th>SKU</th>
+                <th>Kategori</th>
+                <th>Stok</th>
+                <th>Min</th>
+                <th>Durum</th>
+                <th>İşlemler</th>
+              </tr>
+            </thead>
+            <tbody id="productBody"></tbody>
+          </table>
+          <p id="emptyState" class="empty" hidden>Aramaya uygun ürün bulunamadı.</p>
+        </div>
+      </section>
+    </main>
+
+    <template id="rowTemplate">
+      <tr>
+        <td class="name"></td>
+        <td class="sku"></td>
+        <td class="category"></td>
+        <td class="stock"></td>
+        <td class="min-stock"></td>
+        <td><span class="badge status"></span></td>
+        <td class="actions">
+          <button class="small decrement" type="button">-1</button>
+          <button class="small increment" type="button">+1</button>
+          <button class="small warning edit-min" type="button">Min+1</button>
+          <button class="small ghost edit" type="button">Düzenle</button>
+          <button class="small danger delete" type="button">Sil</button>
+        </td>
+      </tr>
+    </template>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
